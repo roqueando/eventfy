@@ -1,6 +1,12 @@
-const router = require('tiny-router');
+const EventFy = require('./eventfy');
+const Eventfy = new EventFy(8080);
 
-router.listen(8080);
-console.log('🚀 SERVER UP ON PORT 8080 [online] ');
+Eventfy.public(__dirname + '/assets');
 
-require('./routes')(router);
+Eventfy.point('/user', (app) => {
+
+	app.sendEvent('sendTime', () => {
+		return new Date();
+	}, 1000);
+
+});
