@@ -1,8 +1,3 @@
-const Source = new EventSource('/user');
+let user = io('http://localhost:8080/user');
 
-Source.addEventListener('sendTime', result => {
-
-	var el = document.getElementById('put_here');
-
-	console.log(result.data);
-})
+user.emit('event', {message: 'Hello Eventfy'} );

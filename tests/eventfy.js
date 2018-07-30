@@ -4,20 +4,16 @@ const should = require('chai').should();
 
 describe('Class Eventfy test', () => {
 
-	
-	describe('#point()', () => {
+	describe('constructor', () => {
 
-		it('should be okay', () => {
+		it('Should be okay when start without url', () => {
 
-			event.point('test', () => {
-
-				console.log('DANASE');
-
-			});
+			event.public(__dirname + '/assets');
 
 		});
 
-	})
+	});
+
 
 });
 

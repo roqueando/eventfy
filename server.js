@@ -1,12 +1,14 @@
 const EventFy = require('./eventfy');
 const Eventfy = new EventFy(8080);
 
-Eventfy.public(__dirname + '/assets');
+Eventfy.pointer('/user', namespace => {
 
-Eventfy.point('/user', (app) => {
+	namespace.on('connection', socket => {
 
-	app.sendEvent('sendTime', () => {
-		return new Date();
-	}, 1000);
+		socket.on('event', data => {
+			console.log(data.message);
+		});
+
+	});
 
 });
