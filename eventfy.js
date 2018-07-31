@@ -20,10 +20,29 @@ class Eventfy {
 	 * 
 	 * @param { Integer } Port default port is 8080
 	 */
-	constructor(Port = 8080) {
-		this.server = require('http').createServer();
-		this.io = require('socket.io')(this.server);
-		this.server.listen(Port);
+	constructor(port = 8080, opts = {}) {
+		
+		if(!(opts.useExpress == undefined) && opts.useExpress == true) {
+
+			this.app = opts.app;
+			this.server = require('http').Server(this.app);
+			this.io = require('socket.io')(this.server);
+			this.app.listen(port);
+
+			console.log(`🚀 Server online on express app on port ${port} `);
+
+		}else {
+
+			this.server = require('http').createServer();
+			this.server.listen(port);
+
+			this.io = require('socket.io')(this.server);
+			console.log(`🚀 Server online on port ${port} `);
+
+		}
+
+		
+		
 	}
 
 	/**

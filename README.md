@@ -50,12 +50,29 @@ Eventfy.pointer('/admin', admin => {
 
 ## `new Eventfy()`
 
-He come with a default port 8080 that will turn on the server and require the Socket.io module. For now is made with http module, but soon will have integration with Express. e.g.:
+He come with a default port 8080 that will turn on the server and require the Socket.io module. e.g.:
 
 ```javascript	
 
-const EventFy = require('../eventfy');
+const EventFy = require('eventfy');
 const Eventfy = new EventFy();
+
+// with Express application
+
+const EventFy = require('eventfy');
+const express = require('express');
+const app = express();
+
+// pass the port first
+// and follow, pass an Object for config
+// with the keys useExpress and app
+
+const Eventfy = new EventFy(8080, {
+	useExpress: true,
+	app: app
+	
+});
+
 
 ```
 

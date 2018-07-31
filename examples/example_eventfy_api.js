@@ -1,5 +1,12 @@
 const EventFy = require('../eventfy');
-const Eventfy = new EventFy();
+const express = require('express');
+const app = express();
+
+const Eventfy = new EventFy(8080, {
+	useExpress: true,
+	app: app
+	
+});
 
 Eventfy.pointer('/user', user => {
 
