@@ -1,6 +1,6 @@
 {
   "name": "eventfy",
-  "version": "0.2.0",
+  "version": "1.0.2",
   "description": "An API Events Based",
   "main": "server.js",
   "scripts": {
