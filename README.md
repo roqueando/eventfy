@@ -48,9 +48,13 @@ Eventfy.pointer('/admin', admin => {
 
 ## API
 
-## `new Eventfy()`
+## `new Eventfy([port, opts])`
 
-He come with a default port 8080 that will turn on the server and require the Socket.io module. e.g.:
+He come with a default port 8080 that will turn on the server and require the Socket.io module.
+
+`opts.useExpress` Boolean
+`opts.app` Express Application 
+
 
 ```javascript	
 
