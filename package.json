@@ -1,10 +1,11 @@
 {
   "name": "eventfy",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "An API Events Based",
   "main": "server.js",
   "scripts": {
-    "test": "mocha tests/eventfy"
+    "test": "mocha tests/eventfy",
+    "start": "node examples/example_eventfy_api"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "dependencies": {
     "socket.io": "^2.1.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "jest": "^23.4.2",
+    "node-static": "^0.7.10"
+  }
 }
