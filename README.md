@@ -5,7 +5,7 @@ That is a module for real-time event-based APIs.
 
 ### Installing
 
-`npm install --save evenfty`
+`npm install --save eventfy`
 
 
 ### Usage

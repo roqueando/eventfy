@@ -33,16 +33,14 @@ class Eventfy {
 
 		}else {
 
-			this.server = require('http').createServer();
+			this.server = require('http').Server();
 			this.server.listen(port);
 
 			this.io = require('socket.io')(this.server);
 			console.log(`🚀 Server online on port ${port} `);
 
 		}
-
-		
-		
+	
 	}
 
 	/**
@@ -64,7 +62,37 @@ class Eventfy {
 
 	}
 
+	/**
+	 * A middleware for general event points
+	 * @param  {Function} callback 
+	 * @return {Function} callback
+	 */
+	middle(callback) {
 
+		this.io.use((socket, next) => {
+
+			callback(socket, next);
+
+		});
+
+	}
+
+	middlePoint(pointer, callback) {
+
+		this.io.of(pointer).use((socket, next) => {
+
+			callback(socket, next);
+
+		});
+
+	}
+
+	error(errorName, errorData = {}) {
+		let err = new Error(errorName);
+		err.data = errorData;
+
+		return err;
+	}
 }
 
 module.exports = Eventfy;

@@ -1,12 +1,5 @@
 const EventFy = require('../eventfy');
-const express = require('express');
-const app = express();
-
-const Eventfy = new EventFy(8080, {
-	useExpress: true,
-	app: app
-	
-});
+const Eventfy = new EventFy(8080);
 
 Eventfy.pointer('/user', user => {
 
@@ -18,12 +11,13 @@ Eventfy.pointer('/user', user => {
 
 });
 
-Eventfy.pointer('/admin', admin => {
+Eventfy.middlePoint('/user', (user, next) => {
 
-	admin.on('check', data => {
-
-		console.log(data.users);
-		
+	if(user.request.headers.auth) return next();
+	let err = Eventfy.error('Auth error', {
+		type: 'Authentication_Error'
 	});
+	
+	next(err);
 
 });
