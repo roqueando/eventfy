@@ -107,6 +107,7 @@ Eventfy.pointer('/admin', admin => {
 
 * [Canva](https://canva.com) - Logo made by canva.com
 
+* [Object Encrypter](https://github.com/voronianski/node-object-encrypter) - Encrypt/decrypt javascript objects as base64 strings with optional TTL support
 ## Contributing
 
 Please read [CONTRIBUTING.md](https://github.com/roqueando/eventfy/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to me.
