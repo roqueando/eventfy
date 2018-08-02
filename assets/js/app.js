@@ -15,21 +15,13 @@ let post = {
 
 }
 
-let list = {
 
-	users: [
-		"John",
-		"Marco",
-		"Slave"
-	]
-}
 
 const user = pointer('http://localhost:8080', 'user');
 user.emit('publish', post );
-user.emit('datas', {
-	title: "Something",
-	body: "Lorem ipsum",
-	timestamp: new Date()
+user.on('publish response', data => {
+
+	console.log(data);
 });
 
 user.on('error', err => {
@@ -43,4 +35,11 @@ user.on('response data', data => {
 		<h1>${data.res.title}</h1>
 		<blockquote>${data.res.body} at <i>${data.res.timestamp}</i></blockquote>
 	`);
+});
+
+user.on('protected data', data => {
+
+	console.log(data);
+	user.emit('protected response', data);
+
 });
