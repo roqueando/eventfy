@@ -9,9 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/roqueando/eventfy",
+    "url": "https://github.com/roqueando/eventfy",
     "homepage": "https://github.com/roqueando/eventfy#readme"
   },
+  "keywords":[
+      "realtime",
+      "api",
+      "events",
+      "websocket"
+  ],
   "author": "Vitor Roque",
   "license": "MIT",
   "dependencies": {
