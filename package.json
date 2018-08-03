@@ -1,6 +1,6 @@
 {
   "name": "eventfy",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "An API Events Based",
   "main": "server.js",
   "scripts": {
@@ -12,11 +12,11 @@
     "url": "https://github.com/roqueando/eventfy",
     "homepage": "https://github.com/roqueando/eventfy#readme"
   },
-  "keywords":[
-      "realtime",
-      "api",
-      "events",
-      "websocket"
+  "keywords": [
+    "realtime",
+    "api",
+    "events",
+    "websocket"
   ],
   "author": "Vitor Roque",
   "license": "MIT",
