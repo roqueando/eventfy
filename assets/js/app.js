@@ -24,6 +24,7 @@ user.on('publish response', data => {
 	console.log(data);
 });
 
+
 user.on('error', err => {
 
 	console.log(err);

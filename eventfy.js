@@ -62,15 +62,6 @@ class Eventfy {
 	 */
 	constructor(port = 8080, opts = {}) {
 		
-		/**
-		 * Object Encrypter Module
-		 * @type {Module}
-		 */
-		this.ObjectEncrypter = require('object-encrypter');
-
-		// Set the secret key of encrypter
-		this.Encrypter = this.ObjectEncrypter('52733596ED6E8DA7EC4F3DA61A983182A77FB5674F9F1DC37757F702D88D9F02');
-
 		if(!(opts.useExpress == undefined) && opts.useExpress == true) {
 
 			this.app = opts.app;
@@ -89,8 +80,6 @@ class Eventfy {
 			console.log(`🚀 Server online on port ${port} `);
 
 		}
-
-	
 
 	}
 
@@ -123,10 +112,21 @@ class Eventfy {
 	 * @param  {String} eventName the name of the event
 	 * @param  {Object} data      All data that you want to emit
 	 */
-	secureEmit(socket, eventName, data) {
+	secureEmit(socket, eventName, data, encoding = `base64`) {
 
-		data = this.Encrypter.encrypt(data);
-		socket.emit(eventName, data);
+		let buff, data_base64;
+
+		if(typeof data == 'object') {
+
+			buff = new Buffer(JSON.stringify(data), 'ascii');
+			data_base64 = buff.toString(encoding);
+
+		}else {
+
+			return new Error(`is needed an Object to proceed`);
+		}
+		
+		socket.emit(eventName, data_base64);
 
 	}
 
@@ -144,7 +144,10 @@ class Eventfy {
 
 		socket.on(eventName, data => {
 
-			callback(this.Encrypter.decrypt(data));
+			let buff = new Buffer(data, 'base64');
+			let data_str = buff.toString('ascii');
+			data = JSON.parse(data_str);
+			callback(data);
 
 		});
 

@@ -15,7 +15,6 @@
   "author": "Vitor Roque",
   "license": "MIT",
   "dependencies": {
-    "object-encrypter": "^0.1.3",
     "socket.io": "^2.1.1"
   },
   "devDependencies": {
