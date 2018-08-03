@@ -6,18 +6,8 @@ Eventfy.pointer('/user', user => {
 
 	user.on('publish', data => {
 
-		user.emit('publish response', data);
+		user.emit('publish response', {msg: 'Publish success'});
 
-	})
+	});
 });
 
-// Eventfy.middlePoint('/user', (user, next) => {
-
-// 	if(user.request.headers.auth) return next();
-// 	let err = Eventfy.error('Auth error', {
-// 		type: 'Authentication_Error'
-// 	});
-	
-// 	next(err);
-
-// });

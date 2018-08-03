@@ -51,10 +51,6 @@ class Eventfy {
 	 * 
 	 * @param {Function} opts.app Receives the express application
 	 * 
-	 * @param {Module} this.ObjectEncrypter the methods to that module
-	 *                                      is optional to use, if you
-	 *                                      want more security on your
-	 *                                      API.
 	 *
 	 * @description That will check if you want to use express, follow
 	 *              to setting up the server and prepare to use the
@@ -110,6 +106,7 @@ class Eventfy {
 	 *                            or something else
 	 *                            
 	 * @param  {String} eventName the name of the event
+	 * 
 	 * @param  {Object} data      All data that you want to emit
 	 */
 	secureEmit(socket, eventName, data, encoding = `base64`) {
@@ -138,6 +135,7 @@ class Eventfy {
 	 *                              or something else
 	 *                              
 	 * @param  {String}   eventName the name of the event
+	 * 
 	 * @param  {Function} callback  Data handler
 	 */
 	secureResponse(socket, eventName, callback) {
@@ -147,6 +145,7 @@ class Eventfy {
 			let buff = new Buffer(data, 'base64');
 			let data_str = buff.toString('ascii');
 			data = JSON.parse(data_str);
+
 			callback(data);
 
 		});
