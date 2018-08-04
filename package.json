@@ -2,7 +2,7 @@
   "name": "eventfy",
   "version": "1.0.8",
   "description": "An API Events Based",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest tests/eventfy.test",
     "start": "node examples/example_eventfy_api"
