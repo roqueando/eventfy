@@ -1,3 +1,3 @@
-const eventfy = require('eventfy')
+const eventfy = require('./eventfy')
 
 module.exports = eventfy;

@@ -208,4 +208,4 @@ class Eventfy {
 
 }
 
-module.exports.eventfy = Eventfy;
+module.exports = Eventfy;
