@@ -157,7 +157,7 @@ class Eventfy {
 	 * @param  {Function} callback 
 	 * @return {Function} callback
 	 */
-	middle(encrypt = true, callback) {
+	middle(callback) {
 
 
 		this.io.use((socket, next) => {
@@ -199,11 +199,10 @@ class Eventfy {
 	 *              socket.io a special packet called 'error' handles all type
 	 *              of errors that we can emit by events.
 	 */
-	error(errorName, errorData = {}) {
-		let err = new Error(errorName);
-		err.data = errorData;
+	error(where, errorName, errorData = {}) {
 
-		return err;
+		this.io.of(where).emit(errorName, errorData);
+
 	}
 
 }
