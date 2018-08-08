@@ -1,5 +1,5 @@
 const EventFy = require('../eventfy');
-const Eventfy = new EventFy(8080);
+const Eventfy = new EventFy();
 
 
 Eventfy.pointer('/user', user => {
@@ -10,4 +10,6 @@ Eventfy.pointer('/user', user => {
 
 	});
 });
+
+Eventfy.listen(8080);
 

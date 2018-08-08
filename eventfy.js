@@ -43,8 +43,6 @@ class Eventfy {
 	/**
 	 * Constructor
 	 * 
-	 * @param { Integer } Port default port is 8080
-	 * 
 	 * @param {Object} opts Settings options for the server
 	 * 
 	 * @param {Boolean} opts.useExpress Defaults false or undefined
@@ -56,24 +54,19 @@ class Eventfy {
 	 *              to setting up the server and prepare to use the
 	 *              Event-Based Eventfy's default API
 	 */
-	constructor(port = 8080, opts = {}) {
-		
-		if(!(opts.useExpress == undefined) && opts.useExpress == true) {
+	constructor(opts = {}) {
+		this.opts = opts;
+		if(!(this.opts.useExpress == undefined) && this.opts.useExpress == true) {
 
-			this.app = opts.app;
+			this.app = this.opts.app;
 			this.server = require('http').Server(this.app);
 			this.io = require('socket.io')(this.server);
-			this.app.listen(port);
 
-			console.log(`🚀 Server online on express app on port ${port} `);
 
 		}else {
 
 			this.server = require('http').Server();
-			this.server.listen(port);
-
 			this.io = require('socket.io')(this.server);
-			console.log(`🚀 Server online on port ${port} `);
 
 		}
 
@@ -159,14 +152,11 @@ class Eventfy {
 	 */
 	middle(callback) {
 
-
 		this.io.use((socket, next) => {
 
 			callback(socket, next);
 
 		});
-
-		
 
 	}
 
@@ -203,6 +193,21 @@ class Eventfy {
 
 		this.io.of(where).emit(errorName, errorData);
 
+	}
+
+	listen(port, opts) {
+
+		if(!(this.opts.useExpress == undefined) && this.opts.useExpress == true) {
+			
+			this.app.listen(port);
+			console.log(`🚀 Server online on express app on port ${port} `);
+
+		}else {
+
+			this.server.listen(port);
+			console.log(`🚀 Server online on port ${port} `);
+
+		}
 	}
 
 }
